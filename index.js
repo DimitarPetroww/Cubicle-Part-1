@@ -1,9 +1,7 @@
 const express = require("express")
 const config = require("./config/config")
+const router = require("./router")
 const app = express()
 require("./config/express")(app)
-app.get("/", (req, res) => {
-    res.render("home", {layout: false})
-})
-
+app.use(router)
 app.listen(config.PORT, () => console.log(`Server is listening on port: ${config.PORT}...`))
