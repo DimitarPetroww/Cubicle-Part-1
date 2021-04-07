@@ -1,13 +1,7 @@
-const app = require("express")()
+const express = require("express")
 const config = require("./config/config")
-const handlebars = require("express-handlebars")
-
-
-app.engine("hbs", handlebars({
-    extname: "hbs"
-}))
-app.set("view engine", "hbs")
-
+const app = express()
+require("./config/express")(app)
 app.get("/", (req, res) => {
     res.render("home", {layout: false})
 })
